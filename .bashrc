@@ -103,7 +103,8 @@ if [ -f /etc/bashrc ]; then
 	  alias diskspace="du -Sh | sort -n -r |more"
 	  # Show me the size (sorted) of only the folders in this directory
 	  alias folders="find . -maxdepth 1 -type d -print | xargs du -skh | sort -rn"
-	  alias dir="ll -alh"
+	  alias ll="ls -alh --color"
+      alias dir="ll"
 	  alias df="df -h"
 	  export PS1='[`date +%T` \u@\h \W]\$ '
 
