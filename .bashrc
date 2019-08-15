@@ -146,4 +146,5 @@ if [ -f /etc/bashrc ]; then
 	  alias df='df -H'
 	  alias du='du -ch'
 	  alias ls='ls -alh'
+      alias update="sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade"
 export wORK_DIR=~/ansible/
