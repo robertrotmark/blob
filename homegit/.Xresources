@@ -1,0 +1,28 @@
+#if __has_include(".extend.Xresources")
+#include ".extend.Xresources"
+#endif
+
+! ^ The above lines are no comments!
+! Leave them as they are if a file ~/.extend.Xresources is being used on your system.
+! config can be added there or also here below.
+! For comments use "!"
+
+#ifdef SRVR_shitpc
+  urxvt.font: xft:Consolas:size=12, xft:Inconsolata for Powerline:size=12
+  i3.font_size: 12
+#endif
+
+#ifdef SRVR_x10
+  urxvt.font: xft:Consolas:size=20, xft:Inconsolata for Powerline:size=20
+  i3.font_size: 20
+#endif
+
+#ifdef SRVR_pocket
+  urxvt.font: xft:Consolas:size=20, xft:Inconsolata for Powerline:size=20
+  i3.font_size: 20
+#endif
+
+color.primary: #999999
+color.secondary: #222222
+color.shadow: #268bd2
+color.urgent: #2f343a

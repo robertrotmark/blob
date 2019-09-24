@@ -1,0 +1,237 @@
+set_from_resource $font_size i3.font_size 18
+set_from_resource $color_primary color_primary #eeeeee
+set_from_resource $color_secondary color_secondary #222222
+set_from_resource $color_accent color_shadow #268bd2
+set_from_resource $color_shadow color_shadow #999999
+set_from_resource $color_urgent color_urgent #2f343a
+
+gaps inner 15
+gaps outer 0
+smart_borders on
+smart_gaps on
+new_window none
+for_window [class="^.*"] border pixel 4
+
+# Set modifier key
+set $mod Mod4
+
+# Set font
+font pango: M+ 1m, FontAwesome, Ionicons $font_size
+
+# Set colors
+# class                 border           backgr.          text             indicator        child_border
+client.focused          $color_accent    $color_accent    $color_accent    $color_secondary
+client.focused_inactive $color_secondary $color_secondary $color_accent    $color_secondary $color_secondary
+client.unfocused        $color_secondary $color_shadow    $color_secondary $color_secondary $color_secondary
+client.urgent           $color_urgent    $color_secondary $color_primary   $color_secondary $color_secondary
+client.placeholder      $color_secondary $color_shadow    $color_primary   $color_secondary $color_secondary
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Use mod-Control-Up and Down to rotate through the workspace list.
+bindsym $mod+Control+Up workspace prev
+bindsym $mod+Control+Down workspace next
+
+# start a terminal
+bindsym $mod+Return exec urxvtc
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -i -l 15 -w 400 -nb "$color_primary" -nf "$color_secondary" -sb "$color_secondary" -sf "$color_primary" -fn "pango Mono-$i3.font_size"'
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+odiaeresis move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# lock screen
+bindsym $mod+l exec --no-startup-id i3lock -c 222222 -f -i /home/niklas/Pictures/wallpapers/lock.png
+
+# volume
+bindsym $mod+KP_Add exec amixer sset Master '5%+'
+bindsym $mod+KP_Subtract exec amixer sset Master '5%-'
+bindsym $mod+KP_Multiply exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer sset Master '5%+'
+bindsym XF86AudioLowerVolume exec amixer sset Master '5%-'
+bindsym XF86AudioMute exec amixer set Master toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    font pango:DejaVu Sans Mono, Awesome $font_size
+    colors {
+        # Whole color settings
+        background $color_primary
+	statusline $color_secondary
+	separator $color_secondary
+
+        # Type                     border         background     font
+                focused_workspace  $color_primary $color_primary $color_secondary
+                active_workspace   $color_primary $color_primary $color_shadow
+                inactive_workspace $color_primary $color_primary $color_shadow
+                urgent_workspace   $color_urgent  $color_primary $color_secondary
+
+    }
+    position top
+    status_command i3status -c ~/.config/i3/i3status.conf
+}
+
+# Power menu
+set $powermenu "Power: [p]oweroff  [r]eboot [s]uspend"
+bindsym $mod+Delete      mode $powermenu
+
+mode $powermenu {
+    bindsym p         exec systemctl poweroff, mode "default"
+    bindsym r         exec systemctl reboot, mode "default"
+    bindsym s         exec systemctl suspend, mode "default"
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
+
+# Switch back and forth between workspaces, like C-a C-a in screen
+workspace_auto_back_and_forth yes
+bindsym $mod+z workspace back_and_forth
+
+# Next and previous workspace
+bindsym $mod+p workspace prev
+bindsym $mod+n workspace next
+
+# Move workspace to the next output
+bindsym $mod+x exec i3-input -F 'move workspace to output "%s"' -P 'Move to: '
+
+# Rename current workspace
+bindsym $mod+o exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+
+# Gopass menu
+bindsym $mod+plus exec ~/bin/gopass ls --flat | dmenu -l 15 -nb "#222222" -nf "#FFF" -sb "#f9ee4d" -sf "#222222" | xargs --no-run-if-empty gopass show -c
+
+# Gopass OTP menu
+bindsym $mod+Shift+plus exec ~/bin/gopass ls --flat  mypass/otp | dmenu -l 15 -nb "#222222" -nf "#FFF" -sb "#f9ee4d" -sf "#222222" | xargs --no-run-if-empty gopass otp -c
+
+# Launch music player
+bindsym XF86Tools exec xfce4-terminal -e mocp
+
+# Music control
+bindsym XF86AudioNext exec mocp --next
+bindsym XF86AudioPrev exec mocp --previous
+bindsym XF86AudioPlay exec mocp --toggle-pause
+bindsym XF86AudioStop exec mocp --exit
+
+# Start file manager
+bindsym XF86Search exec pcmanfm
+
+# No following mouse focus
+focus_follows_mouse no
+
+# Dont move mouse when switching windows
+mouse_warping none
+
+# Printscreen
+bindsym Print exec i3-scrot
+bindsym --release Shift+Print exec i3-scrot --select
+
+# Restore wallpaper
+exec --no-startup-id nitrogen --restore
+
+# Start urxvt server
+exec --no-startup-id urxvtd -f -q
+
+# Start pcmanfm daemon
+exec --no-startup-id pcmanfm -d
+
+# Start notification daemon
+exec --no-startup-id dunst

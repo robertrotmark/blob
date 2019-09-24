@@ -1,0 +1,89 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              false
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+urxvt.depth:                32
+urxvt.geometry:             90x30
+urxvt.transparent:          true
+urxvt.shading:              10
+urxvt.urgentOnBell:         true
+urxvt.visualBell:           true
+urxvt.loginShell:           true
+urxvt.saveLines:            1500
+urxvt.internalBorder:       3
+urxvt.lineSpace:            0
+
+! Fonts
+urxvt.allow_bold:           false
+urxvt.font: xft:Consolas:size=18, xft:Inconsolata for Powerline:size=18
+urxvt*boldFont: xft:Monospace
+
+! Fix font space
+urxvt*letterSpace: -1
+
+! Scrollbar
+urxvt.scrollStyle:          rxvt
+urxvt.scrollBar:            false
+
+! Perl extensions
+urxvt.perl-ext-common:      default,matcher,font-size
+urxvt.matcher.button:       1
+urxvt.urlLauncher:          /usr/bin/xdg-open
+
+! Font size
+urxvt.keysym.C-Up:     font-size:increase
+urxvt.keysym.C-Down:   font-size:decrease
+
+! Cursor
+urxvt.cursorBlink:          true
+urxvt.cursorColor:          #657b83
+urxvt.cursorUnderline:      false
+
+! Pointer
+urxvt.pointerBlank:         true
+
+urxvt*background: #222222
+urxvt*foreground: #657b83
+urxvt*fading: 10
+urxvt*fadeColor: #222288
+urxvt*cursorColor: #93a1a1
+urxvt*pointerColorBackground: #586e75
+urxvt*pointerColorForeground: #93a1a1
+
+!! black dark/light
+urxvt*color0: #073642
+urxvt*color8: #005B73
+
+!! red dark/light
+urxvt*color1: #dc322f
+urxvt*color9: #cb4b16
+
+!! green dark/light
+urxvt*color2: #859900
+urxvt*color10: #586e75
+
+!! yellow dark/light
+urxvt*color3: #b58900
+urxvt*color11: #657b83
+
+!! blue dark/light
+urxvt*color4: #268bd2
+urxvt*color12: #839496
+
+!! magenta dark/light
+urxvt*color5: #d33682
+urxvt*color13: #6c71c4
+
+!! cyan dark/light
+urxvt*color6: #2aa198
+urxvt*color14: #93a1a1
+
+!! white dark/light
+urxvt*color7: #eee8d5
+urxvt*color15: #fdf6e3

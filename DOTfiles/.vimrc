@@ -74,6 +74,10 @@ nnoremap <F3> :set nonumber! norelativenumber!<CR>
 " Paste Toggle with F2" 
 set pastetoggle=<F2>
 
+" Format code "
+"#set gg=G"
+
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -444,6 +448,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
+Plug 'fgsch/vim-varnish'
 
 call plug#end()
 colorscheme gruvbox
