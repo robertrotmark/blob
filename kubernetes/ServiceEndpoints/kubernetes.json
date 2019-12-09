@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "administratorsGroup": null,
+  "authorization": {
+    "parameters": {
+      "apiToken": "{ApiToken}",
+      "serviceAccountCertificate": "{serviceAccountCertificate}"
+    },
+    "scheme": "Token"
+  },
+  "createdBy": null,
+  "data": {
+    "authorizationType": "ServiceAccount"
+  },
+  "name": "{ServiceconnectionName}",
+  "type": "kubernetes",
+  "url": "{fqdn}",
+  "readersGroup": null,
+  "groupScopeId": null,
+  "serviceEndpointProjectReferences": null,
+  "isReady": false,
+  "operationStatus": null
+}
