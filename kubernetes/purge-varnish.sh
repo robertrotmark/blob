@@ -1,4 +1,7 @@
-# Write your commands here
+#!/bin/bash
+#Created by Robert Rotmark
+#Link: https://github.com/robertrotmark/blob/tree/master/kubernetes
+
 
 if (( "$#" != 2 )) 
 then
@@ -22,5 +25,4 @@ do
    echo Banning URL: $banurl in pod $name
    kubectl -n $namespace exec -it $name -- sh -c "varnishadm ban \"req.url == $banurl\""
 done
-
 
