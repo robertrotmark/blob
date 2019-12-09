@@ -1,4 +1,6 @@
 #!/bin/bash
+#Created by Robert Rotmark
+#Link: https://github.com/robertrotmark/blob/tree/master/kubernetes
 
 #This is required for Azure devops to work with AZ cli
 az extension add --name azure-devops
